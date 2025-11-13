@@ -1,113 +1,101 @@
 # CQBSoldierTracking__TRACE_SIH-24
-🚨 T.R.A.C.E — Tactical Reconnaissance and Communication Equipment
-National Winner — Smart India Hackathon 2024 (NSG Problem Statement)
+# 🚨 T.R.A.C.E — Tactical Reconnaissance and Communication Equipment  
+### **National Winner — Smart India Hackathon 2024 (NSG Problem Statement)**  
 
-3D Live Soldier Tracking • Health Monitoring • Friend–Foe Detection • RL-based Route Optimization
+3D Live Soldier Tracking • Health Monitoring • Friend–Foe Detection • RL-based Route Optimization  
 
-⭐ STAR SUMMARY
-S — Situation
+---
 
-Special forces needed a precise, reliable, GPS-independent indoor tracking system that works even when:
+## ⭐ STAR SUMMARY  
 
-Power & WiFi are cut
+### **S — Situation**  
+Special forces required a **precise, GPS-independent indoor tracking system** for multi-floor operations where:  
+- GPS fails  
+- Power & WiFi are cut  
+- Signals face obstruction from walls  
+- Real-time health & identification are critical  
 
-GPS fails inside buildings
+---
 
-Multi-floor operations cause signal obstruction
+### **T — Task**  
+Build a system capable of:  
+- Accurate **3D soldier location**  
+- **Health vitals tracking**  
+- **Friend–Foe identification**  
+- Working entirely on a **private mesh network**  
+- **On-the-go deployment** without pre-installed infra  
 
-Real-time health & identification are required
+---
 
-T — Task
+## 🚀 A — Approach  
 
-Design a system that provides:
+### **1. Hardware Architecture**
 
-Exact 3D location across floors
+#### **Armband (per soldier)**  
+- UWB module → precise 3D ranging  
+- IMU (GA-50) → dead reckoning  
+- ECG + vitals sensors → health monitoring  
+- ESP32 → wireless communication  
 
-Continuous health vitals
+#### **Spektor Nodes (per floor)**  
+- Create independent mesh network  
+- Time-of-Flight (ToF)-based ranging  
+- mmWave radar for person detection  
 
-Friend–Foe identification
+#### **Gateway Node**  
+- Aggregates floor-wise data  
+- Sends to Command Center Dashboard  
 
-A fully independent mesh network
+---
 
-On-the-go deployment (no pre-installed infra)
+### **2. Localization & Communication Stack**  
+- **Ultra-Wideband (UWB)** for high-accuracy ranging  
+- **ToF (Time of Flight)** to overcome reflections & obstruction issues  
+- **SLAM + IMU fusion** to maintain location even with signal loss  
+- **MIMO** to enhance spatial precision  
+- **Private Mesh Network** for complete independence from WiFi/GPS  
 
-🚀 A — Approach
-1. Hardware Architecture
+---
 
-Armband (per soldier)
+### **3. Command Center Software**  
+- Real-time **3D soldier mapping**  
+- Drag-and-drop for team allocation  
+- Health monitoring (ECG, HR)  
+- Unidentified person alerts  
+- **RL-based Chase Optimizer** for optimal pursuit routes  
 
-UWB module → precise 3D ranging
+---
 
-IMU (GA-50) → dead reckoning
+## 🙅‍♂️ Rejected Approaches (and Why Not)
 
-ECG + vitals sensors → health tracking
+| Approach | Reason Rejected |
+|----------|-----------------|
+| **BLE** | Unstable RSSI → poor distance accuracy |
+| **WiFi** | Power/WiFi is shut down during operations |
+| **GPS** | Fails indoors + only gives 2D location |
+| **Only Accelerometers** | Position drift becomes unusable over time |
+| **RFID Tags** | Line-of-sight only; high power requirement |
+| **Altimeters** | Weather-dependent & inconsistent |
 
-ESP32 → wireless communication
+---
 
-Spektor Nodes (per floor)
+## 🧠 R — Result  
+- ✔ **Accurate 3D inter-floor tracking**  
+- ✔ Fully functional **mesh-based communication**  
+- ✔ **Health vitals integration**  
+- ✔ **Friend–Foe detection** prototype completed  
+- ✔ **RL route optimizer** output achieved  
+- ✔ **Throwable / Pre-installation node deployment** options  
+- 🏆 **Winner — Smart India Hackathon 2024** (NSG Problem Statement)  
 
-Independent mesh network
+---
 
-ToF-based distance estimation
+## 📸 System Overview  
+- **Armband:** UWB + IMU + ECG  
+- **Spektor Node:** Mesh + ToF + mmWave  
+- **Gateway:** Master receiver  
+- **Dashboard:** Visualization + Alerts  
 
-mmWave radar for person detection
+---
 
-Gateway Node
-
-Collects data → Command Center
-
-2. Localization & Communication Technique
-
-UWB + ToF → stable ranging even with walls
-
-SLAM + IMU fusion → continuity during signal loss
-
-MIMO → improves spatial accuracy
-
-Mesh Network → no dependency on WiFi/GPS/power supply
-
-3. Command Center Dashboard (Software)
-
-Live 3D mapping of all soldiers
-
-Drag-and-drop soldier management
-
-Health vitals view (ECG, HR)
-
-Real-time alerts (unidentified person, SOS)
-
-RL-based Chase Optimizer for pursuit routes
-
-🙅‍♂️ Rejected Approaches (and Why)
-Technology	Why We Didn’t Choose It
-BLE	Highly unstable RSSI → inaccurate location
-WiFi	Not available during operations; easy to jam
-GPS	Fails indoors + gives only 2D location
-Only Accelerometers	Drift increases → position becomes unusable
-RFID Tags	Need line-of-sight; power-hungry
-Altimeters	Unreliable due to weather/environment variations
-🧠 R — Result
-
-✔ Accurate 3D inter-floor soldier tracking
-
-✔ Stable mesh network without external infrastructure
-
-✔ Integrated health monitoring
-
-✔ Working friend–foe detection prototype
-
-✔ RL system produced chase path outputs
-
-✔ Two deployment modes: pre-installed & throwable module
-
-🏆 Won Smart India Hackathon 2024
-
-📸 System Overview
-
-Armband → UWB + IMU + ECG
-
-Spektor Node → Mesh + mmWave + ToF
-
-Gateway Node → Master receiver
-
-Dashboard → Visualization + Analytics
+## 🧩 Recommended Repository Structure  
